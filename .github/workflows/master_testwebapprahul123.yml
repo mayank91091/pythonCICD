@@ -34,12 +34,6 @@ jobs:
       - name: Run model.py
         run: python src/model.py
 
-      - name: Run train.py
-        run: python src/train.py
-
-      - name: Run build.py
-        run: build.py
-
       - name: Run tests and generate XML report
         run: |
           pytest test.py --junitxml=test-results.xml
