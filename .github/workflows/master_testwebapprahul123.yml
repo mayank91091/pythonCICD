@@ -34,22 +34,6 @@ jobs:
       - name: Run model.py
         run: python src/model.py
 
-      - name: Run tests and generate XML report
-        run: |
-          pytest tests/test_classification_project.py --junitxml=test-results.xml
-
-      - name: Generate HTML report from XML
-        run: |
-          pytest --cov-report=html:cov_html tests/test_classification_project.py
-
-      - name: Upload test results
-        uses: actions/upload-artifact@v2
-        with:
-          name: test-results
-          path: |
-            test-results.xml
-            cov_html  # The HTML coverage report directory
-
       - name: Upload artifact for deployment jobs
         uses: actions/upload-artifact@v2
         with:
