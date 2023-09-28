@@ -27,8 +27,40 @@ jobs:
           python -m venv venv
           source venv/bin/activate
       
-        
-        
+      - name: Install dependencies
+        run: |
+          pip install tensorflow numpy pytest
+
+          - name: Run data-preparation.py
+      run: python src/data_preparation.py
+
+    - name: Run model.py
+      run: python src/model.py
+
+    - name: Run train.py
+      run: python src/train.py
+
+    - name: Run predict.py
+      run: python src/predict.py
+
+    - name: Run tests and generate XML report
+      run: |
+        pytest test.py --junitxml=test-results.xml
+        # You can customize the test report filename as needed
+
+    - name: Generate HTML report from XML
+      run: |
+        pytest --cov-report=html:cov_html test.py
+        # This command generates an HTML coverage report, replace 'test.py' with your test file
+
+    - name: Upload test results
+      uses: actions/upload-artifact@v2
+      with:
+        name: test-results
+        path: |
+          test-results.xml
+          cov_html  # The HTML coverage report directory
+          
       # Optional: Add step to run tests here (PyTest, Django test suites, etc.)
       
       - name: Upload artifact for deployment jobs
