@@ -38,10 +38,6 @@ jobs:
         run: |
           pytest tests/test_classification_project.py --junitxml=test-results.xml
 
-      - name: Generate HTML report from XML
-        run: |
-          pytest --cov-report=html:cov_html tests/test_classification_project.py
-
       - name: Upload test results
         uses: actions/upload-artifact@v2
         with:
