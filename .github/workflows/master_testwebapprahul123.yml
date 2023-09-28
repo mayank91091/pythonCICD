@@ -36,11 +36,11 @@ jobs:
 
       - name: Run tests and generate XML report
         run: |
-          pytest test.py --junitxml=test-results.xml
+          pytest test_classification_project.py --junitxml=test-results.xml
 
       - name: Generate HTML report from XML
         run: |
-          pytest --cov-report=html:cov_html test.py
+          pytest --cov-report=html:cov_html test_classification_project.py
 
       - name: Upload test results
         uses: actions/upload-artifact@v2
