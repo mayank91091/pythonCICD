@@ -1,0 +1,6 @@
+Traceback (most recent call last):
+  File "C:\Users\mayan\Downloads\classification_project\main.py", line 1, in <module>
+    from src.predict import predict_image
+  File "C:\Users\mayan\Downloads\classification_project\src\predict.py", line 1, in <module>
+    import tensorflow as tf
+ModuleNotFoundError: No module named 'tensorflow'
