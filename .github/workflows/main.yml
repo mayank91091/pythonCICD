@@ -1,0 +1,42 @@
+name: Python CI
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.x  # Replace with your desired Python version
+
+    - name: Install dependencies
+      run: |
+        pip install tensorflow numpy pytest
+        # Add any additional dependencies your project requires
+
+    - name: Run data-preparation.py
+      run: python src/data_preparation.py
+
+    - name: Run model.py
+      run: python src/model.py
+
+    - name: Run train.py
+      run: python src/train.py
+
+    - name: Run predict.py
+      run: python src/predict.py
+
+    - name: Run build.py
+      run: python build.py
+
+    - name: Run test.py
+      run: pytest test.py
